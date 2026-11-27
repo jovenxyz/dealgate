@@ -1,2 +1,3 @@
-// Public entry point for dealgate. Exports are added here as features land.
-export {};
+// Public entry point for dealgate.
+export type { Change, FieldValue } from "./change.js";
+export * from "./policy/index.js";

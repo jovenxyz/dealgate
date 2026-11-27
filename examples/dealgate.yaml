@@ -1,0 +1,56 @@
+# dealgate rules file
+#
+# Every change an AI agent asks for gets one of three decisions:
+#   allow    dealgate makes the change right away
+#   approve  the change waits until a person approves it
+#   deny     the change is blocked, and the agent is told why
+#
+# When several checks apply to one change, the strictest decision wins:
+# deny beats approve, and approve beats allow.
+#
+# Object and field names are HubSpot's own internal names.
+
+version: 1
+crm: hubspot
+
+# What happens to anything this file doesn't mention: deny (the default) or approve.
+default: deny
+
+objects:
+  contacts:
+    create: allow
+    update:
+      allow: [firstname, lastname, phone, jobtitle]
+      approve: [email, lifecyclestage]
+    delete: deny
+
+  companies:
+    create: approve
+    update:
+      allow: [phone, city]
+      approve: [name, domain, industry]
+    delete: deny
+
+  deals:
+    create: approve
+    update:
+      allow: [description, closedate, amount]
+      approve: [dealname, dealstage]
+    delete: deny
+
+# Rules check the values an agent wants to write, when creating or updating.
+# They can only make a decision stricter, never looser.
+rules:
+  # Small amount changes go through; big ones wait for a person.
+  - name: big-deal
+    when: { object: deals, field: amount, greaterThan: 10000 }
+    decision: approve
+
+  # Only people can mark a deal as won.
+  - name: people-close-deals
+    when: { object: deals, field: dealstage, equals: closedwon }
+    decision: deny
+
+limits:
+  # A request with more changes than this needs approval.
+  maxChangesPerRequest: 10
