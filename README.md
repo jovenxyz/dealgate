@@ -24,5 +24,7 @@ Requires Node.js 22 and pnpm 10.
 pnpm install
 pnpm test        # run the tests
 pnpm typecheck   # check types without building
+pnpm lint        # check linting and formatting (Biome)
+pnpm lint:fix    # fix what Biome can fix automatically
 pnpm build       # compile to dist/
 ```
