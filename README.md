@@ -15,3 +15,14 @@ dealgate sits between AI agents and your CRM. Every change an agent wants to mak
 - **Undo:** any change can be rolled back with one command
 - **Audit log:** a record of which agent changed what, and when
 - **Zero setup:** runs locally on SQLite with a single command
+
+## Development
+
+Requires Node.js 22 and pnpm 10.
+
+```sh
+pnpm install
+pnpm test        # run the tests
+pnpm typecheck   # check types without building
+pnpm build       # compile to dist/
+```

@@ -1,0 +1,25 @@
+# Dependencies
+node_modules/
+
+# Build and test output
+dist/
+coverage/
+*.tsbuildinfo
+
+# Local environment and secrets
+.env
+.env.*
+!.env.example
+
+# Local SQLite databases
+*.db
+*.db-journal
+*.sqlite
+
+# Logs
+*.log
+
+# Editor and OS files
+.claude/settings.local.json
+.DS_Store
+Thumbs.db

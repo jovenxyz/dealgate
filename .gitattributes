@@ -1,0 +1,2 @@
+# Store text files with LF line endings, whatever each contributor's OS or git settings.
+* text=auto eol=lf
