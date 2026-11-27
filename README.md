@@ -1,5 +1,7 @@
 # dealgate
 
+[![CI](https://github.com/jovenxyz/dealgate/actions/workflows/ci.yml/badge.svg)](https://github.com/jovenxyz/dealgate/actions/workflows/ci.yml)
+
 **Let AI agents work your CRM, safely.**
 
 dealgate sits between AI agents and your CRM. Every change an agent wants to make is checked against your rules, shown as a before/after diff, held for human approval when it's risky, and recorded so it can be undone.
